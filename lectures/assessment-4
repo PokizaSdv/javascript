@@ -1,0 +1,19 @@
+// 6. Build a function sliceFromFirstVowel that returns a substring starting from the first vowel to the end of the original string.
+
+function sliceFromFirstVowel(str) {
+    var vowels = "aeiou";
+    for (var i = 0; i < str.length; i++) {
+        var char = str[i];
+        if (vowels.includes(char)) {
+            return str.slice(i);
+        }
+    }
+
+    return "There is no vowels in the string";
+}
+
+console.log(sliceFromFirstVowel("javascript"));
+
+sliceFromFirstVowel("javascript");
+// Output: 'avascript'
+// Explanation: The function slices the string 'javascript' starting from the first vowel 'a' to its end, resulting in the new string 'avascript'.
