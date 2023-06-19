@@ -1,0 +1,39 @@
+//1 Create a function named evenIndexSumString that accepts a string of digits as an argument. The function should return the sum of digits which are located at even indices in the string.
+
+function evenIndexSumString(num) {
+    var sum = 0;
+    var strNum = String(num);
+    for (var i = 0; i < strNum.length; i++) {
+        if (strNum[i] % 2 === 0) {
+            sum = sum + parseInt(strNum[i]);
+        }
+    }
+    return sum;
+}
+console.log(evenIndexSumString("123456789"));
+
+//2 Create a function named stringToCharArrayAdvanced that accepts a string as an argument. The function should return an array where each element is a character from the input string. Ignore numbers and special characters (!?/).
+function stringToCharArrayAdvanced(string) {
+    var result = [];
+    var characters = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    for (i = 0; i < string.length; i++) {
+        if (characters.includes(string[i])) {
+            result = result.concat(string[i]);
+        }
+    }
+    return result;
+}
+console.log(stringToCharArrayAdvanced("Pokiza1234"));
+
+// 3 Create a function named evenIndexMultiplyString that accepts a string of digits as an argument. The function should return the product of digits which are located at even indices in the string.
+function evenIndexMultiplyString(num) {
+    var product = 1;
+    var strNum = String(num);
+    for (i = 0; i < strNum.length; i++) {
+        if (strNum[i] % 2 === 0) {
+            product = product * parseInt(strNum[i]);
+        }
+    }
+    return product;
+}
+console.log(evenIndexMultiplyString("123456789"));
