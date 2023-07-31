@@ -1,5 +1,5 @@
 // Step 1: Creating the Basic Structure
-const book1 = {
+const book = {
     title: "Book One",
     author: "Author One",
     yearPublished: 2020
