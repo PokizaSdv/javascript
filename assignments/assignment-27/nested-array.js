@@ -12,7 +12,7 @@ function findMaxNumber(arr) {
     }
     return maxNumber;
 }
-// console.log(findMaxNumber([([1, 2, 3], [4, 5, 6], [7, 8, 9])]));
+console.log(findMaxNumber([([1, 2, 3], [4, 5, 6], [7, 8, 9])]));
 
 // 2. Count Characters
 // Write a function that takes an array of arrays of characters as input. Count the occurrences of each character and return an object with character counts in the format { character: count }.
@@ -135,8 +135,8 @@ console.log(
 // Output: { min: [4, 5], max: [6, 7, 8, 9] }
 
 function minAndMaxArr(arr) {
-    let minSum = 0;
-    let maxSum = 0;
+    let minSum = Infinity;
+    let maxSum = -Infinity;
     let minArr = [];
     let maxArr = [];
     for (let i = 0; i < arr.length; i++) {
@@ -147,10 +147,13 @@ function minAndMaxArr(arr) {
         if (sum < minSum) {
             minSum = sum;
             minArr = [arr[i]];
+        } else if (sum === minSum) {
+            minArr.push(arr[i]);
         }
 
         if (sum > maxSum) {
-            maxSum = [arr[i]];
+            maxSum = sum;
+            maxArr = [arr[i]];
         } else if (sum === maxSum) {
             maxArr.push(arr[i]);
         }
@@ -172,7 +175,9 @@ console.log(
 function mergeArray(arr) {
     let mergedArray = [];
     for (let i = 0; i < arr.length; i++) {
-        mergedArray.push(arr[i]);
+        for (let j = 0; j < arr[i].length; j++) {
+            mergedArray.push(arr[i][j]);
+        }
     }
     return mergedArray;
 }
