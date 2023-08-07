@@ -1,0 +1,57 @@
+What is Data?
+Understanding data is crucial in many fields, including business, science, and technology. Here's a simple introduction to the concept of data:
+
+At its most basic, data is a collection of facts, statistics, or information that are represented in various forms. Data can be numbers, words, measurements, observations, or even just descriptions of things.
+
+There are many ways to categorize data, but let's start with three basic types:
+
+Qualitative Data (or Categorical Data): This is information that can't be measured with numbers but can be observed and understood. This might include things like colors, names, labels, or categories. For instance, if you have a list of people's favorite types of music, that's qualitative data.
+Quantitative Data (or Numerical Data): This is information that can be measured and expressed numerically. This could be things like heights, weights, temperatures, or ages. For example, if you measure the height of a group of people, that data would be quantitative.
+Boolean Data: This is data that has only two possible values, often expressed as true or false. For instance, if you're recording whether a light bulb is on or off, you're dealing with Boolean data.
+Data can also be raw or processed:
+
+Raw Data: This is data in its most unprocessed, collected form. It's the basic facts and numbers as you first receive or collect them. For instance, if you conduct a survey, the individual responses you get are raw data.
+Processed Data: This is data that has been analyzed or manipulated in some way to make it easier to understand or use. For instance, if you take that survey data and calculate the average response to a question, that average is processed data.
+It's also important to understand the difference between structured data and unstructured data:
+
+Structured Data: This is data that's organized in a clear, logical way, often in rows and columns like a spreadsheet or a database. Structured data is easy to input, search, and analyze.
+Unstructured Data: This is data that doesn't have a clear, predefined organization. This could include everything from text documents to photos to social media posts.
+These are just some basics about data, and there's a lot more to learn. Data can be used for many purposes, from making decisions in business, to advancing scientific research, to powering the latest artificial intelligence algorithms.
+
+Primitive Data Types: String, Number, Boolean
+There are seven types of primitive data.
+
+String: Represents a sequence of characters.
+Number: Represents numerical values, including integers and floating-point numbers.
+Boolean: Represents logical values and can be either true or false.
+Undefined: A variable that has been declared but has not yet been assigned a value is undefined.
+Null: Represents a deliberate assignment of "nothing" to a variable.
+Symbol: Introduced in ECMAScript 6 (ES6), a symbol is a unique and immutable data type that is often used as an identifier for object properties.
+BigInt: Also a newer addition in ECMAScript 2020, BigInt is used for working with numbers that are larger than the largest number JavaScript's Number type can represent (2^53 - 1 or 9007199254740991).
+This lesson will cover only the first 3: String, Number, and Boolean.
+
+String
+In JavaScript, a string is a sequence of characters used to represent text. A string can be created by enclosing text in single quotes ('), double quotes ("), or backticks (``). Strings are used to store data that can be represented in text form. JavaScript strings are immutable, which means they cannot be changed once they have been created. However, you can create a new string based on an existing one. String methods allow you to perform operations like finding a substring, concatenating two strings, and more.
+
+Example:
+
+'Hello, World'
+"Hello, World"
+`Hello, World`
+Number
+This data type is used to represent both integers and floating-point numbers. Unlike many other languages, JavaScript does not differentiate between integer and floating-point values. So, you can have values like 42 (an integer), 3.14159 (a floating-point number), and 1.23e6 (scientific notation). Also noteworthy is JavaScript's special Number values: Infinity, -Infinity, and NaN (Not a Number).
+
+Example:
+
+10 // Integer
+10.5 // Floating Point
+1.23e6 // Scientific
+Boolean:
+Boolean is a logical data type that can only have two values: true or false. Booleans are often used in conditional testing. If a condition is true, the code under that condition will execute. If it's false, the code will not execute.
+
+Example:
+
+true
+false
+
+These are fundamental building blocks in JavaScript and most other programming languages. Knowing how to use these primitive data types effectively is a vital part of being a skilled programmer.
