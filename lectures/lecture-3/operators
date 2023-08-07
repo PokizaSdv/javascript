@@ -1,0 +1,119 @@
+Working with arithmetic, comparison, and logical operators
+JavaScript provides a number of operators that you can use to manipulate and compare values.
+
+-   (Addition): Plus
+
+*   (Subtraction): Minus
+
+-   (Multiplication): Times
+    / (Division): Divided by
+    % (Modulus): Modulo or Mod
+    ++ (Increment): Plus Plus *Next lesson
+    -- (Decrement): Minus Minus *Next lesson
+    = (Assignment): Equals \*Next lesson
+    > (Greater Than): Greater Than
+    > < (Less Than): Less Than
+    > = (Greater Than or Equal to): Greater Than or Equals
+    > <= (Less Than or Equal to): Less Than or Equals
+    > && (Logical AND): And
+    > || (Logical OR): Or
+    > ! (Logical NOT): Not
+    > Arithmetic Operators
+    > These are used to perform mathematical operations:
+
+Addition (+): This operator adds two numbers together.
+
+console.log(5 + 3); // Outputs: 8
+
+Subtraction (-): This operator subtracts the second number from the first.
+
+console.log(5 - 3); // Outputs: 2
+
+Multiplication (\*): This operator multiplies two numbers.
+
+console.log(5 \* 3); // Outputs: 15
+
+Division (/): This operator divides the first number by the second.
+
+console.log(10 / 2); // Outputs: 5
+
+Modulus (%): This operator returns the remainder of the division of the first number by the second.
+
+console.log(10 % 3); // Outputs: 1
+
+Comparison Operators
+Comparison operators are used to compare two values. These return a boolean value - either true or false.
+
+Greater than (>): This operator checks if the value of the left operand is greater than the value of the right operand. If yes, then the condition becomes true.
+
+console.log(5 > 3); // Outputs: true
+
+Less than (<): This operator checks if the value of the left operand is less than the value of the right operand. If yes, then the condition becomes true.
+
+console.log(5 < 3); // Outputs: false
+
+Greater than or equal to (>=): This operator checks if the value of the left operand is greater than or equal to the value of the right operand. If yes, then the condition becomes true.
+
+console.log(5 >= 3); // Outputs: true
+
+Less than or equal to (<=): This operator checks if the value of the left operand is less than or equal to the value of the right operand. If yes, then the condition becomes true.
+
+console.log(5 <= 3); // Outputs: false
+
+Logical Operators
+Logical operators are used to determine the logic between variables or values.
+
+Logical AND (&&): This operator returns true if both the operands are true.
+
+console.log(true && false); // Outputs: false
+
+Logical OR (||): This operator returns true if at least one of the operands is true.
+
+console.log(true || false); // Outputs: true
+
+Logical NOT (!): This operator returns the opposite of the operand. If the operand is true, it returns false. If the operand is false, it returns true.
+
+console.log(!true); // Outputs: false
+
+Equality Comparison
+In JavaScript, == and === are comparison operators that are used to compare values for equality. They differ in how they handle type coercion, which is the process of converting a value from one type to another.
+
+== is the abstract or loose equality operator. It compares two values for equality, and before making the comparison, it performs type coercion if the types of the two operands are not the same. This means that if you're comparing a number and a string, for example, JavaScript will try to convert the string to a number and then perform the comparison. This can sometimes lead to surprising results.
+=== is the strict equality operator. It compares two values for equality, but unlike ==, it does not perform type coercion. It will only return true if the two operands are of the same type and have the same value. Because it does not perform type coercion, it is generally considered safer and more predictable than ==.
+Loose or Abstract Equality
+console.log(1 == "1"); // true, because after type coercion, 1 and "1" are equivalent.
+console.log(true == "1"); // true, because JavaScript coerces "1" to boolean true.
+console.log(0 == false); // true, because JavaScript coerces false to 0.
+console.log("false" == false); // false, because JavaScript coerces "false" to a number, NaN, which is not equal to false.
+On the other hand, === (strict equality) operator does not perform type coercion:
+
+Strict Equality
+console.log(1 === "1"); // false, because the number 1 is not the same type as the string "1".
+console.log(true === "1"); // false, because the boolean true is not the same type as the string "1". console.log(0 === false); // false, because the number 0 is not the same type as boolean false. console.log("false" === false); // false, because the string "false" is not the same type as boolean false.
+
+How it Works
+The process of how == works in JavaScript involves an algorithm known as Abstract Equality Comparison Algorithm as defined by the ECMAScript specification. It checks equality in the following manner:
+
+If the types of the two operands are the same, use strict comparison (===). No type conversion is needed.
+If the types are different, then JavaScript converts the operands to the same type using type coercion rules, and then makes a comparison.
+Here are the type coercion rules for ==:
+
+If one operand is null and the other is undefined, return true.
+If one operand is a number and the other is a string, convert the string to a number and then compare.
+If one operand is a boolean, convert it to a number (true to 1 and false to 0), and then compare.
+Examples
+Let's take a look at the step by step process of some of the examples I mentioned earlier:
+
+console.log(1 == "1"); // true
+Here JavaScript sees that one operand is a number and the other is a string. It converts the string "1" to a number 1, and then compares 1 with 1 using strict comparison, which results in true.
+
+console.log(true == "1"); // true
+In this case, one operand is a boolean and the other is a string. JavaScript first converts the boolean true to the number 1, then it converts the string "1" to a number 1. It then compares 1 with 1 using strict comparison, which results in true.
+
+console.log(0 == false); // true
+Here, one operand is a number and the other is a boolean. JavaScript converts the boolean false to the number 0, and then compares 0 with 0 using strict comparison, resulting in true.
+
+console.log("false" == false); // false
+In this case, JavaScript converts the boolean false to a number 0. However, when trying to convert "false" to a number, it gets NaN. Then JavaScript compares NaN with 0 using strict comparison, which results in false.
+
+The rules for type coercion can sometimes lead to surprising results, which is why many developers prefer to use the === (strict equality) operator, which does not perform type coercion.
