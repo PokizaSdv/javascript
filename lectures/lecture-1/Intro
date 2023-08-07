@@ -1,0 +1,143 @@
+What is Programming?
+Programming, also known as coding, is the process of creating a set of instructions that a computer can understand and execute. It's a way of communicating with computers to make them perform specific tasks.
+
+When you program, you're essentially giving the computer a detailed recipe to follow. The "ingredients" are inputs (like clicking a mouse, typing on a keyboard, or data from the internet) and the "steps" are what the computer should do with those inputs. The result is an output, which could be anything from displaying a website, playing a video game, running a machine, or analyzing data.
+
+Different programming languages (like Python, JavaScript, or C++) are used to write these instructions, each with its own set of rules and syntax. These languages allow humans to write instructions in a way that is easier for us to understand, which the computer then translates into its own language (binary code) to execute the instructions.
+
+Programming is an essential part of creating all the software and applications you use on your devices, from your operating system to your web browser, from mobile apps to video games. It's a creative, problem-solving activity and forms the backbone of virtually all technology we use today.
+
+History and Role of JavaScript
+History
+JavaScript is a programming language that was invented in 1995 by Brendan Eich while he was working at a company called Netscape. The purpose of JavaScript was to make websites more interactive and user-friendly.
+
+Here are some key points in JavaScript's history:
+
+Initial version of JavaScript (then called Mocha) was created in just ten days!
+1995: JavaScript was first created and used in the Netscape web browser.
+1996 - 1997: To standardize the language across different web browsers, JavaScript was presented to a standards organization, which resulted in the creation of a standard called ECMAScript.
+1999: A very important version of ECMAScript (version 3) was released, forming the foundation of the modern JavaScript we know today.
+2005: Libraries like jQuery were introduced, making it easier for developers to use JavaScript on websites.
+2008: Google's Chrome browser came out with a fast new JavaScript engine called V8.
+2009: Node.js was created, allowing JavaScript to be used outside the browser, like on servers.
+2010 - present: New JavaScript libraries like React, Angular, and Vue.js made it possible to create very complex and interactive web applications.
+2015: A big update to ECMAScript (version 6) added a lot of new features to JavaScript, making the language even more powerful.
+Role
+JavaScript is one of the core technologies of the World Wide Web, along with HTML (HyperText Markup Language) and CSS (Cascading Style Sheets). Together, these three technologies form the building blocks of most websites and web applications.
+
+Here are some of the key roles JavaScript plays:
+
+Interactivity: JavaScript allows web pages to respond to user actions and create dynamic content. This includes things like responding to button clicks, displaying dropdown menus, creating image sliders, form validation, and more. Without JavaScript, web pages would be static and non-interactive.
+Asynchronous behavior: JavaScript can send and receive data from a server in the background with AJAX (Asynchronous JavaScript and XML) without needing to refresh the entire page. This capability makes it possible to update parts of a webpage dynamically and create a smoother user experience.
+Frontend frameworks and libraries: JavaScript has numerous libraries (like jQuery) and frameworks (like React, Angular, and Vue.js) that provide pre-written JavaScript code to support common functionality, speeding up development and reducing the amount of code developers have to write.
+Server-side programming: With the advent of Node.js, JavaScript is no longer confined to the client side. Node.js is a JavaScript runtime that allows developers to use JavaScript on the server side, enabling full-stack development in JavaScript.
+Mobile App Development: JavaScript can also be used for mobile app development. Frameworks like React Native enable the development of mobile apps with JavaScript, which can run on Android and iOS platforms.
+Web APIs: JavaScript can interact with a wide range of Web APIs (Application Programming Interfaces) to extend the functionality of the web pages, allowing access to features like geolocation, audio and video, graphics, and more.
+In summary, JavaScript is a versatile language crucial in making web and mobile apps interactive and dynamic. It's used in both frontend and backend development, making it one of the most popular and widely used programming languages .
+
+Browser-based Environment
+Most modern web browsers, such as Google Chrome, Mozilla Firefox, Safari, and Microsoft Edge, have built-in JavaScript engines that can interpret and execute JavaScript code.
+
+Here are the steps on how you can run JavaScript code in a web browser:
+
+Create an HTML file
+Add JavaScript to the HTML file: You can add JavaScript to your HTML file in 3 ways: inline, internal script, or external script. We will discuss only Internal and External ways.
+Internal Script
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Browser Env</title>
+    </head>
+    <body>
+        <!-- Your HTML-->
+        <script>
+            console.log("Hello, World!!!");
+        </script>
+    </body>
+  </html>
+
+External Script
+Alternatively, you can create a separate JavaScript file (with a ".js" extension) and link it to your HTML file using the <script> tag with the "src" attribute.
+
+Script file.
+console.log("Hello, World!!!");
+
+HTML file
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Browser Env</title>
+    </head>
+    <body>
+        <!-- Your HTML-->
+        <script src="./script.js"></script>
+    </body>
+</html>
+
+The above code will print "Hello, World!!!" on the browser console.
+
+Console in Google Chrome
+Open Chrome: Launch Google Chrome on your device.
+Access Developer Tools: There are several ways to access the Chrome Developer Tools:
+Right Click: You can right-click anywhere on a webpage and then select "Inspect" or "Inspect Element" from the context menu that appears.
+Menu Option: Click on the three dots on the upper-right corner of Chrome to open the menu. Navigate to "More Tools" > "Developer Tools".
+Shortcut Key: On Windows and Linux, press Ctrl + Shift + I. On macOS, press Cmd + Option + I.
+Select the Console Tab: After the Developer Tools panel opens, click on the "Console" tab. This is where you can see console messages (like errors or log outputs) and execute JavaScript code.
+
+Configuring Node.js Environment
+Installation
+Visit the official Node.js website at https://nodejs.org/.
+You'll see two versions: LTS (Long-Term Support) and Current. The LTS version is recommended for most users as it has been thoroughly tested and verified.
+Download the appropriate installer based on your operating system (Windows or MacOS).
+Run the downloaded file and follow the prompts in the Node.js Setup Wizard to complete the installation.
+Once done, quit your Terminal and relaunch it if it has been open during installation.
+Run node -v on your Terminal. If everything went well, then you should see the NodeJs version like: v16.16.0
+Running a JavaScript file
+Open your text editor of choice (like Visual Studio Code, Atom, Sublime Text, etc.).
+Create a new file with a .js extension, for example, app.js.
+Write your JavaScript code in this file. As an example, let's create a simple "Hello, World!" program: console.log("Hello, World! This is a Node.js script");
+Save the file
+Open Terminal or Git Bash
+Run your JavaScript file: node path/to/your/directory/app.js
+If everything is set up correctly, above message should be printed on your terminal.
+
+Node REPL
+Node REPL vs JS File
+Both the Node REPL and using a file are common ways to run JavaScript code, but they are useful in different scenarios:
+
+Node REPL (read, evaluate, print, loop) is used for testing quick ideas and one-liners. It is very useful when playing around with any curiosities you have because you can see how expressions are evaluated as you type them. Any code that you type into the Node REPL will be lost when you exit it. We will use the Node REPL during lecture to play around one-liners because it gives us immediate feedback.
+
+JS Files are used for saving code for the long term. If you save code to a .js file, you can always read it later, make edits, etc.. When we work on problem sets, assessments, and anything else you want to save, we should save our code to a file!
+
+Using the Node REPL
+To use the Node REPL, simply open up your command line (Terminal on Mac, Command Prompt on Windows) and enter the command node. In the examples below we use $ to show that we are in the command line.
+
+$ node
+
+>
+
+Notice that as soon as we enter the node command, we get a little > on our screen. This > means that we are inside the Node REPL, so we can type any valid JavaScript lines and see what they evaluate to:
+
+$ node
+
+> 1 + 1
+> 2
+>
+> One thing to notice is that when we enter our JS line, the REPL will print out what it evaluates to. After it prints, it will wait for more JavaScript to be entered because we see >.
+
+Let's say we are done with the Node REPL, and want to go back to our plain old command line. To exit, enter the line .exit in the REPL. Doing this will get rid of the >, which means we are no longer in the REPL. When we are back inside our command line we can enter those commands like cd, ls, dir, etc..
+
+$ node
+
+> 1 + 1
+> 2
+> .exit
+> $
