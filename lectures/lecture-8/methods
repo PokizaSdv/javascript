@@ -1,0 +1,64 @@
+Typeof
+In JavaScript, the typeof operator is used to check the data type of a variable. Here's how you can use it with different data types:
+
+String
+var str = 'Hello, world!';
+console.log(typeof str); // "string"
+In this case, typeof str returns "string" because str is a string.
+
+Boolean
+var bool = true;
+console.log(typeof bool); // "boolean"
+Here, typeof bool returns "boolean" because bool is a boolean.
+
+Number:
+Numbers can be integers or floating-point numbers.
+
+var num = 42;
+console.log(typeof num); // "number"
+In this example, typeof num returns "number" because num is a number.
+
+The typeof operator can also return "object", "undefined", "function", and "symbol" for objects, undefined values, functions, and symbols, respectively.
+
+It's worth noting that typeof null will return "object", which is a long-standing bug in JavaScript, as null is not an object but a primitive value representing no value or no object.
+
+Number Methods
+Number.isInteger():
+This method checks if a value is an integer. An integer is a whole number (not a fraction) that can be positive, negative, or zero. For example, 7, -3, and 0 are all integers, but 7.5 is not.
+
+Number.isInteger(7); // true because 7 is an integer
+Number.isInteger(7.5); // false because 7.5 is not an integer
+Number.isNaN()
+This method checks if a value is NaN, which stands for Not a Number. This is a special value that is usually the result of an operation that doesn't make sense mathematically.
+
+Number.isNaN(7); // false because 7 is a number
+Number.isNaN('hello'); // false because 'hello' is a string, not NaN
+Number.isNaN(NaN); // true because NaN is NaN
+parseFloat()
+This function converts a string into a floating point number (a number that can have a decimal point).
+
+parseFloat('7.5'); // 7.5 because '7.5' can be converted to a number
+parseFloat('hello'); // NaN because 'hello' can't be converted to a number
+parseInt()
+This function converts a string into an integer.
+
+parseInt('7'); // 7 because '7' can be converted to a number
+parseInt('7.5'); // 7 because '7.5' is converted to an integer, so the part after the decimal is ignored parseInt('hello'); // NaN because 'hello' can't be converted to a number
+toFixed()
+This method formats a number with a specific number of digits after the decimal point. It returns the result as a string.
+
+let num = 7.77777;
+num.toFixed(2); // "7.78" because num is rounded to have 2 digits after the decimal point
+num.toFixed(0); // "8" because num is rounded to have 0 digits after the decimal point
+In all of these examples, if you see "NaN" as a result, it means that the operation couldn't produce a sensible number. It's JavaScript's way of saying, "I don't know what number this is."
+
+toString()
+It converts a number to a string.
+
+Here's a basic example:
+
+var num = 123;
+var str = num.toString();
+console.log(typeof str); // Output: "string"
+console.log(str); // Output: "123"
+In this example, num is a number. When we call num.toString(), we're converting that number into a string. So, str is now a string containing the characters "123".
