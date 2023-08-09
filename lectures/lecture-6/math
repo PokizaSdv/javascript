@@ -1,0 +1,59 @@
+Math
+
+Mathematics is a field of study that involves properties and relationships of numbers and shapes. It's a fundamental discipline that's used in many areas, from the pure theoretical (like number theory and topology) to practical everyday use (like statistics, engineering, economics, computer science, and many more).
+
+In programming and computer science, Math is also often represented as a built-in object or module in many languages, which provide properties and functions for mathematical constants and functions. For example, in JavaScript, you might see Math.PI for the value of pi, or Math.sqrt(16) to calculate the square root of 16.
+
+The Math namespace object contains static properties and methods for mathematical constants and functions.
+Methods
+floor():
+The floor() method returns the greatest integer less than or equal to a given number.
+
+console.log(Math.floor(3.6)); // Outputs: 3
+console.log(Math.floor(-2.3)); // Outputs: -3
+
+ceil():
+The ceil() function, short for 'ceiling', returns the smallest integer greater than or equal to a given number.
+
+console.log(Math.ceil(4.4)); // Outputs: 5
+console.log(Math.ceil(-3.7)); // Outputs: -3
+
+round():
+The round() function rounds a number to the nearest integer.
+
+console.log(Math.round(4.4)); // Outputs: 4
+console.log(Math.round(4.6)); // Outputs: 5
+
+abs()
+Math.abs() returns the absolute value of a number.
+
+The absolute value of a number is its distance from zero without considering which direction from zero. In other words, absolute value converts negative numbers to positive numbers while leaving positive numbers and zero unchanged.
+
+Here's how to use it:
+
+var x = Math.abs(-7.25); // x equals 7.25
+var y = Math.abs(7.25); // y equals 7.25
+var z = Math.abs(0); // z equals 0
+
+random():
+The random() function generates a pseudo-random number between 0 (inclusive) and 1 (exclusive).
+
+console.log(Math.random()); // Outputs: a number between 0 and 1
+
+But sometimes, you might want to generate a random integer within a specific range, such as between 0 and some integer n. This is where the expression Math.random() \* n comes into play.
+
+The expression Math.random() \* n will generate a random floating-point number between 0 (inclusive) and n (exclusive). This is because Math.random() produces a random float between 0 and 1, and multiplying this by n scales the range up to 0 and n.
+
+However, this still gives you a floating-point number. To get an integer, you can use Math.floor(), which rounds a number down to the nearest whole number. So, Math.floor(Math.random() \* n) gives a random integer between 0 (inclusive) and n (exclusive).
+
+Here's an example of this in a code block:
+
+var n = 10;
+var randomNumber = Math.floor(Math.random() \* n);
+console.log(randomNumber); // Outputs: a random integer between 0 and 9
+
+If you want to include n in the possible outcomes (make it between 0 and n inclusive), you should multiply Math.random() by (n+1).
+
+var n = 10;
+var randomNumber = Math.floor(Math.random() \* (n+ 1));
+console.log(randomNumber); // Outputs: a random integer between 0 and 10
