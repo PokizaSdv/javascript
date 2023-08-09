@@ -1,0 +1,276 @@
+How it works?
+Great programmers don't like doing the same thing twice. This idea is known as the DRY (Don't Repeat Yourself) rule. We use something called functions to avoid saying the same things over and over. Think of a function as a task that we instruct our code to perform whenever we need it. We tell our code this task just once (when we define the function), but we can ask it to perform this task many times (when we call the function).
+
+Suppose you want to work out the average of two numbers:
+
+> (5 + 13) / 2 
+9
+This gives the average of 5 and 13.
+
+> (10 + 16) / 2 
+13
+This gives an average of 10 and 16
+
+> (7 + 2) / 2 
+4.5
+This gives the average of 7 and 2
+
+Doing this way feels like we're doing the same thing over and over. We can see that to get the average of any two numbers, we add them and then divide by 2! Instead of writing this out each time, let's create a function to do it for us:
+
+We're going to create a function and call it avg
+
+function avg(a, b) { 
+  return (a + b) / 2; 
+} 
+
+
+Creating a Function
+When we make a function, we can put any code we like inside it. Let's rewrite avg using easier-to-understand names:
+
+function avg(firstNum, secondNum) {
+    var total = firstNum + secondNum;
+    var average = total / 2;
+    return average;
+}
+When we made the function for avg, we didn't use actual numbers. We make functions in a way that lets them work with lots of different data.
+
+For our avg function, we want to use it to work out the average of any two numbers. firstNum and secondNum are what we call parameters for the avg function. This means that the avg function is waiting to be given two numbers, firstNum and secondNum. So when we actually use the function, we need to give it the numbers it needs!
+
+The great thing about a function is that if we make it cleverly, it will work on lots of different data! For example, we want avg to work with any two numbers, no matter whether they're whole numbers, decimals, negatives, and so on.
+
+Calling a Function
+Now that we know how to make a function, how can we actually use it? Once we've made a function, we can use it as many times as we want.
+
+Let's move away from avg for a moment to see how a simple function works. Let's say we have this code:
+
+console.log("First!");
+console.log("Second!"); 
+When we run this code, it does exactly what we expect. It prints out First!, followed by Second!. This is because JavaScript reads your code from left to right, top to bottom, just like you're reading this now.
+
+But when JavaScript sees a function, it doesn't run the code inside straight away. It just remembers the code so we can use it later. The code below only prints First! followed by Fourth!:
+
+console.log("First!");
+function myFunc() {
+    console.log("Second!");
+    console.log("Third!");
+}
+console.log("Fourth");
+To actually get myFunc to run, we must call it with myFunc(). The code below runs in the following order:
+
+function myFunc() {
+    console.log("Second!");
+    console.log("Third!");
+}
+console.log("First!");
+myFunc();
+console.log("Fourth!");
+Let's say JavaScript is running the file above. Here is the steps it would take, starting from the tippy top of the code:
+
+JS sees a definition for myFunc. It will remember this definition in case we call the function later. It will not evaluate the code inside the function yet.
+JS prints out First!
+JS sees that we are calling myFunc(). At this point it will look at the prior myFunc definition and run the code inside. It is as if we are "jumping" to inside the function definition. This means it will print Second followed by Third!
+JS sees there is no more code to be run inside of myFunc, so it "jumps" back to where we originally called myFunc()
+JS will continue evaluating in order and print Fourth!
+An avg example
+When we specify what data to use for a function call, we refer to that process passing arguments to the function.
+
+function avg(num1, num2) {
+  var sum = num1 + num2;
+  var average = sum / 2;
+  return average;
+}
+// this is a function call
+avg(10, 16);
+
+// this is another function call
+avg(5, 13);
+When we call the function avg(10, 16), we run the code inside the definition for avg. That is, we plug in the parameters with real numbers (num1 becomes 10 and num2 becomes 16). Think of num1 and num2 as variables that contain the values we pass in when we called the function. Then we proceed by running the code inside the function. The parameter names num1 and num2 used through the body of the function behave like variables.
+
+Did you know? the terms parameter and argument are often used interchangeably in casual programmer talk, but the words refer to different things. In the case of our avg(10, 16) function call, num1 and num2 in the function definition are parameters, and the actual numbers, 10 and 16, are arguments!
+
+Return Value
+Now that we know how functions evaluate. Let's see how a return value can be used. We'll use console.log to see the result we get from the avg function.
+
+function avg(num1, num2) {
+  var sum = num1 + num2;
+  var average = sum / 2;
+  return average;
+}
+
+// if we want to check what a function returns we can do this:
+var result = avg(10, 16);
+console.log(result); // prints 13
+
+// or this:
+console.log(avg(10, 16)); // prints 13
+When we call a function, we jump to the function definition and run the code inside. When hit a return statement we immediately exit the function and jump back to where we called the function and evaluate the function call to the value it returned. Every function call evaluates to it's return value! In other words, the expression avg(10, 16) evaluates to 13 just like how the expression 1 + 1 evaluates to 2.
+
+One thing to watch out for is that once we hit a return value we will exit the function immediately. This means that any code after a return will not be executed!
+
+function myFunc() {
+  console.log('before return');
+  return 'a return value';
+  console.log('after return');
+}
+myFunc(); // only prints before return
+
+
+Here's some food for thought: the above code only prints out before return, why don't we see a return value printed out? Hint: we will only see data that we print out using console.log
+
+We can also write functions that don't have return statements. If a function is not explicitly given a return value, it will automatically return undefined.
+
+Anatomy of a Function
+Function Declaration and Function Expression are two different ways to define a function in JavaScript. Both serve the same purpose: to create a function that can be used in your code. However, they have some key differences that may affect how and when you use them. We will learn about the differences in Hoisting lecture.
+
+Function Declaration
+function nameOfFunction(param1, param2, param3, paramN) {
+  // function body...
+  return "a return value!";
+}
+
+Function Expression
+var nameOfFunction = function(param1, param2, param3, paramN) {
+  //function body...
+  return "a return value!";
+}
+
+By writing a function we can reuse code over and over again to solve similar problems with different input data (arguments). For this reason, functions will be your bread and butter for programming.
+
+
+    More on return keyword
+    Using console.log in a function without returning a value is akin to a shopkeeper telling you what your change should be, but not actually giving it to you.
+    
+    Here's an expansion on your analogy:
+    
+    When you make a purchase, you give the shopkeeper some money (the inputs or arguments to the function), and you expect some goods and possibly some change in return (the return value of the function).
+    
+    If the shopkeeper (function) only tells you what your change is (using console.log), but doesn't give it to you (doesn't use return), you'll have the knowledge of what your change should be, but you won't actually have the change to use elsewhere.
+    If the shopkeeper (function) gives you your change (uses return), you can then use that change elsewhere, such as making another purchase (calling another function).
+    In JavaScript and programming in general, having a function return a value is extremely useful because you can then use that value elsewhere in your code. It might be used in a calculation, a comparison, stored for later, etc.
+    
+    On the other hand, console.log simply displays information to the console, which can be useful for debugging or giving the developer information, but the displayed value can't be used elsewhere in your code.
+    
+    Therefore, if you want your functions to produce results that you can use in your code, you should make sure they return those results, rather than just logging them.
+    
+    Let's look at the below table and find out the key differences.
+
+    Examples | console.log
+Function 1
+function capitilize(string) {
+    if (typeof string !== "string") {
+        console.log(`You provided ${typeof string}`);
+    } else {
+        console.log(string[0].toUpperCase() + string.slice(1));
+    }
+}
+This function capitalizes the first character of a string.
+
+Problem-solving thoughts:
+The problem requires a solution that turns the first character of any string into uppercase.
+
+The first step is checking if the input is a string using the typeof operator, because trying to access the first character or call toUpperCase on a non-string could cause an error.
+
+The function then uses the toUpperCase method to change the first character of the string (which is accessed using array-style indexing with string[0]) to uppercase, and uses the slice method to get the rest of the string starting from the second character (at index 1).
+
+Finally, the function uses the + operator to concatenate these two parts together and logs the result.
+
+Function 2
+function confirmInterviewTime(name, day, month, year) {
+    console.log(
+        `Hello ${name}. Your Interview is scheduled for ${month} ${day}, ${year}`
+    );
+}
+This function forms a string that confirms an interview time for a person and logs it.
+
+Problem-solving thoughts:
+The problem requires a solution that combines multiple pieces of information into a coherent message.
+
+The function is given the name of the person and the date of their interview. These pieces of information are inserted into a template string using ${} syntax, which allows JavaScript expressions to be embedded inside the string.
+
+The function then logs this message.
+
+Function 3
+function validatePasswordLength(password) {
+    if (password.length < 8) {
+        console.log("Password cannot have less than 8 chars");
+    } else {
+        console.log("Password length is met the requirement");
+    }
+}
+This function validates the length of a password and logs whether it meets the requirement of being at least 8 characters long.
+
+Problem-solving thoughts:
+The problem requires a solution that verifies whether a password is long enough to be secure.
+
+The function uses the length property of the password string to determine how many characters it contains.
+
+It then uses an if-else statement to check whether the length of the password is less than 8. If it is, the function logs that the password is too short. If it isn't, the function logs that the password meets the length requirement.
+
+Function 4
+
+function isEvenNumber(number) {
+    if (number % 2 === 0) {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+}
+This function determines whether a number is even or odd and logs the result.
+
+Problem-solving thoughts:
+The problem requires a solution that can differentiate even numbers from odd ones.
+
+An even number is defined as one that can be divided evenly by 2. Therefore, the function uses the modulus operator (%), which gives the remainder of division, to check if the number leaves a remainder when divided by 2.
+
+If there is no remainder (i.e., number % 2 === 0), the number must be even, so the function logs that it is even. If there is a remainder, the number must be odd, so the function logs that it is odd.
+
+    Examples | return
+    In JavaScript, the console.log statement is used for outputting information to the console. It is a great tool for debugging and getting feedback about what's happening in your code, but it does not actually affect the execution of your program in any way. The log messages are not usable values within your code.
+    
+    The return statement, on the other hand, is used to specify the value that a function outputs when it is called. This value can then be used elsewhere in your code. It also effectively ends the function's execution and specifies a value to be returned to the function caller.
+    
+    Let's go through each function:
+    
+    Function 1
+    Here is the refactored function that returns a value instead of logging it:
+    
+    function capitilize(string) {
+        if (typeof string !== "string") {
+            return `You provided ${typeof string}`;
+        } 
+       return string[0].toUpperCase() + string.slice(1);
+    }
+    Now the function returns the result directly, and you can use it in your code like so:
+    
+    let capitalizedString = capitalize("hello"); 
+    console.log(capitalizedString); // "Hello" 
+    Function 2
+    function confirmInterviewTime(name, day, month, year) {
+        return `Hello ${name}. Your Interview is scheduled for ${month} ${day}, ${year}`;
+    }
+    Now you can use this function's output elsewhere in your code:
+    
+    let interviewConfirmation = confirmInterviewTime("Alice", 10, "June", 2023); console.log(interviewConfirmation); 
+    Function 3
+    function validatePasswordLength(password) {
+        if (password.length < 8) {
+            return "Password cannot have less than 8 chars";
+        } 
+        return "Password length is met the requirement"
+    }
+    You can use it like:
+    
+    let passwordValidationMessage = validatePasswordLength("password123"); console.log(passwordValidationMessage); // "Password length is met the requirement" 
+    Function 4
+    function isEvenNumber(number) {
+        if (number % 2 === 0) {
+            return true;
+        }
+        return false 
+    }
+    Now you can use the function's output:
+    
+    let isNumberEven = isEvenNumber(3); 
+    console.log(isNumberEven); // "No, it is odd number" 
+    In each of these cases, by using return instead of console.log, the functions become more flexible. Instead of just logging a message, they now produce a value that can be used elsewhere in your program. This is a key concept in functional programming: functions take inputs and produce outputs, without having any side effects like logging to the console.
+    
