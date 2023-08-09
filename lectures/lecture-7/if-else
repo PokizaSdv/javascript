@@ -1,0 +1,93 @@
+//  If, else if, else to control program flow
+// Conditional Statements are fundamental constructs in any programming language that allow us to control the flow of our programs based on certain conditions. We use these constructs to make decisions, where we might want a certain block of code to execute if a condition is met (if), or another block of code to execute if a different condition is met (else if). If none of the conditions we've specified are met, we might want a final block of code to execute (else).
+
+// Syntax
+// if statement: Used to specify a block of code to be executed if a specific condition is true.
+// else if statement: Used to specify a new condition to test if the first condition is false.
+// else statement: Used to specify a block of code to be executed if all conditions are false.
+// if (condition1) {
+//   // code to be executed if condition1 is true
+// } else if (condition2) {
+//   // code to be executed if condition2 is true
+// } else {
+//   // code to be executed if condition1 and condition2 are both false
+// }
+
+// Real World Use Cases
+// These constructs have countless applications in real world programming scenarios. Here are a couple of examples:
+
+// Form Validation:
+// When a user is filling out a form (like when signing up for a new account), we can use if, else if, and else to validate user input.
+
+// For instance, if we want to ensure that the user enters a strong password that they confirm with a matching entry, we might use code like this:
+
+// var password = "strongpassword";
+// var confirmPassword = "strongpasswordd"; // An additional 'd' at the end, so it doesn't match
+
+// if (password === confirmPassword) {
+//     console.log("Passwords match. You can proceed.");
+// } else {
+//     console.log("Passwords do not match. Please check and enter again.");
+// } // Output: Passwords do not match. Please check and enter again.
+
+// In this case, if the password and confirmPassword match, we log a success message. If they don't match, we log a different message asking the user to re-enter the password.
+
+// Weather Application
+// In a weather application, where the user can set their preference for being notified about the weather, we might use constructs like this:
+
+// var userPrefersRainNotification = true;
+// var isItGoingToRainToday = false;
+
+// if (userPrefersRainNotification && isItGoingToRainToday) {
+//     console.log("It's going to rain today. Don't forget your umbrella!");
+// } else if (userPrefersRainNotification && !isItGoingToRainToday) {
+//     console.log("It's not going to rain today. You don't need an umbrella!");
+// } else {
+//     console.log("Enjoy your day!");
+// } // Output: It's not going to rain today. You don't need an umbrella!
+// In this example, we first check if the user wants to be notified about rain and if it's going to rain. If both conditions are true, we send them a message. If the user wants to be notified but it's not going to rain, we send a different message. If the user doesn't want to be notified about rain, we simply wish them to enjoy their day.
+
+// Diet Application
+// Suppose we're creating an application to track and manage a user's diet and workout routine. Here, we will implement some logic to give a user feedback on their calorie intake and exercise habits.
+
+// var userName = "John";
+// var userDailyCalorieIntake = 2800;
+// var userDailyWorkoutDuration = 60; // in minutes
+
+// // Health guideline parameters
+// var recommendedCalorieIntake = 2500; // for males
+// var recommendedWorkoutDuration = 75; // moderate exercise
+
+// console.log(`Hello, ${userName.trim()}`);
+
+// if (userDailyCalorieIntake > recommendedCalorieIntake) {
+//     console.log(
+//         "You are exceeding your recommended daily calorie intake. Consider revising your diet."
+//     );
+// }
+// if (userDailyWorkoutDuration < recommendedWorkoutDuration) {
+//     console.log(
+//         "You're not meeting the recommended daily workout duration. Try to exercise more."
+//     );
+// }
+// // String message to be modified according to user's performance
+// var message = "Overall, your health habits need improvement.";
+// if (
+//     userDailyCalorieIntake <= recommendedCalorieIntake &&
+//     userDailyWorkoutDuration >= recommendedWorkoutDuration
+// ) {
+//     message = message.replace("need improvement", "are excellent. Keep it up!");
+// } else if (
+//     Math.abs(userDailyCalorieIntake - recommendedCalorieIntake) <= 100 &&
+//     Math.abs(userDailyWorkoutDuration - recommendedWorkoutDuration) <= 10
+// ) {
+//     message = message.replace(
+//         "need improvement",
+//         "are quite good. Just a bit more effort!"
+//     );
+// }
+// console.log(message);
+
+// // This script checks if the user is within the recommended calorie intake and workout duration. It also adjusts the feedback message based on how close they are to the guidelines. It makes use of if, else if, and else, along with string methods (trim, replace) and arithmetic operations.
+
+// This script checks if the user is within the recommended calorie intake and workout duration. It also adjusts the feedback message based on how close they are to the guidelines. It makes use of if, else if, and else, along with string methods (trim, replace) and arithmetic operations.
