@@ -1,0 +1,177 @@
+Intro
+Objects in JavaScript can be compared to objects in real life. For instance, let's consider a book. A book has a title, an author, a number of pages, and a publisher. In the same vein, a JavaScript object has properties which define its characteristics.
+
+Imagine we're building a library system. A book in this system could be represented as an object like so:
+
+let book = {
+title: 'The Great Gatsby',
+author: 'F. Scott Fitzgerald',
+pages: 180,
+publisher: 'Charles Scribner\'s Sons',
+year: 1925:
+keywords: ['classic', 'American', 'novel']
+};
+Each property is a key-value pair. The keys in this case are title, author, pages, publisher, and year. The values are 'The Great Gatsby', 'F. Scott Fitzgerald', 180, 'Charles Scribner\'s Sons', and 1925., ['classic', 'American', 'novel']
+
+Accessing properties
+We can access these properties using either dot notation or bracket notation:
+
+console.log(book.title); // Outputs: 'The Great Gatsby'
+console.log(book['author']); // Outputs: 'F. Scott Fitzgerald'
+Bracket Notation vs Dot Notation
+Bracket notation is more flexible because it can take a variable (as shown above) or a string. If your property name would not be a valid JavaScript identifier, or if it contains spaces, you must use bracket notation:
+
+console.log(book['title']); // Outputs: 'The Great Gatsby'
+console.log(book['multiple words']); // Works with bracket notation, would cause an error with dot notation.
+Generally, use dot notation when you can, and bracket notation when you have to (like when your property names contain spaces, special characters, or when using a variable to access a property).
+
+Undefined Values in Objects
+In JavaScript, if you try to access a property of an object that doesn't exist, it will return undefined. This is a special value in JavaScript that essentially means "no value" or "non-existent."
+
+let book = { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', };
+console.log(book.publisher); // Outputs: undefined
+Here, we're trying to access the publisher property of the book object. Since we didn't define a publisher property when we created the book object, it returns undefined.
+
+Modifying Properties
+book.year = 1926;
+console.log(book.year); // Outputs: 1926
+Adding New Properties
+book.genre = 'Tragedy';
+console.log(book.genre); // Outputs: 'Tragedy'
+Deleting Existing Properties
+delete book.publisher;
+console.log(book.publisher); // Outputs: undefined
+Nesting
+let book = {
+title: 'The Great Gatsby',
+author: 'F. Scott Fitzgerald',
+pages: 180,
+publisher: "Charles Scribner's Sons",
+year: 1925,
+keywords: ['classic', 'American', 'novel'],
+reviews: [
+{
+reviewer: 'John',
+rating: 4,
+comment: 'A beautifully written book.',
+},
+{
+reviewer: 'Emily',
+rating: 5,
+comment: 'One of my all-time favorites!',
+},
+],
+};
+In this updated book object, we have added a new property called reviews, which is an array of nested objects. Each object within the reviews array represents a review for the book and contains properties such as reviewer, rating, and comment.
+
+To access properties of nested objects within an array, you can use a combination of dot notation and bracket notation. For example, to access the rating property of the first review, you can use book.reviews[0].rating.
+
+Here's an example that demonstrates accessing properties of nested objects within the book object:
+
+console.log(book.reviews[0].rating); // Output: 4
+console.log(book.reviews[1].comment); // Output: "One of my all-time favorites!"
+You can modify the properties of nested objects in a similar way to what we covered earlier. For instance, to change the rating of the second review, you can assign a new value to book.reviews[1].rating:
+
+book.reviews[1].rating = 5;
+console.log(book.reviews[1].rating); // Output: 5
+To add a new review to the reviews array, you can use the push method:
+
+book.reviews.push({ reviewer: 'Sarah', rating: 3, comment: 'Not my cup of tea.', }); console.log(book.reviews.length); // Output: 3
+Similarly, you can delete properties or entire nested objects using delete. For example, to delete the comment property of the first review:
+
+delete book.reviews[0].comment;
+console.log(book.reviews[0].comment); // Output: undefined
+By using arrays of nested objects within an object, you can represent more complex data structures and access the properties of those objects using appropriate indexing and notation.
+
+Object Methods
+Objects can have methods, which are functions that are associated with the object and can be invoked to perform specific actions on the object's data. In your example, let's consider the object book:
+
+let book = {
+title: 'The Great Gatsby',
+author: 'F. Scott Fitzgerald',
+pages: 180,
+publisher: "Charles Scribner's Sons",
+year: 1925,
+keywords: ['classic', 'American', 'novel'],
+};
+To add methods to this book object, you can define them as functions within the object literal. Here's an example:
+
+let book = {
+title: 'The Great Gatsby',
+author: 'F. Scott Fitzgerald',
+pages: 180,
+publisher: "Charles Scribner's Sons",
+year: 1925,
+keywords: ['classic', 'American', 'novel'],
+getSummary: function () {
+return `${this.title} is a ${this.pages}-page book written by ${this.author}.`;
+},
+addKeyword: function (keyword) {
+this.keywords.push(keyword);
+},
+};
+In this updated book object, we have added two methods: getSummary and addKeyword. Let's understand what each of these methods does:
+
+getSummary: This method is a function that returns a summary of the book. It uses the object's properties (this.title, this.pages, and this.author) to construct the summary string. The this keyword refers to the current object (book) inside the method. For example, book.getSummary() would return the following string: "The Great Gatsby is a 180-page book written by F. Scott Fitzgerald."
+addKeyword: This method is a function that takes a keyword as an argument and adds it to the keywords array property of the book object. It uses the push method to add the keyword to the array. For example, book.addKeyword('fiction') would add the keyword 'fiction' to the keywords array, resulting in book.keywords being ['classic', 'American', 'novel', 'fiction'].
+By adding these methods to the object, you can now interact with the book object and perform actions specific to the object's data. For instance, you can retrieve a summary of the book or add keywords dynamically.
+
+Looping through Objects
+In JavaScript, a common task is working with objects. Objects are collections of key-value pairs, and they are heavily used to structure and organize data in applications. They allow you to represent real-world entities in your code with their attributes (keys) and corresponding characteristics (values).
+
+However, to fully leverage the power of objects, we need to navigate through these keys and values. This is where the for...in loop becomes important. It's a specific loop structure provided by JavaScript for iterating through the keys of an object.
+
+For instance, let's assume you are building a travel booking application and you're handling a list of hotels. Each hotel can be represented as an object:
+
+let hotel = {
+name: "Grand Hotel",
+city: "Paris",
+rooms: 100,
+hasPool: true,
+hasGym: false
+};
+If you wanted to build a description for each hotel dynamically, you could use a for...in loop:
+
+let description = "";
+
+for (let key in hotel) {
+description += `The hotel's ${key} is ${hotel[attribute]}. `;
+}
+
+console.log(description);
+This would output:
+
+The hotel's name is Grand Hotel. The hotel's city is Paris. The hotel's rooms is 100. The hotel's hasPool is true. The hotel's hasGym is false.
+In this code, attribute takes on the value of each property name in the hotel object. The expression hotel[attribute] gets the value of each property.
+
+The key advantage here is that you don't have to manually specify the attributes of the hotel you're interested in. Your for...in loop will automatically iterate through all of the hotel's attributes. This is especially useful when dealing with large objects or when you don't know the keys in advance. It helps keep your code flexible and adaptable.
+
+Object.keys() and Object.values()
+When building applications, data organization and manipulation is critical. One of the most popular data structures used to organize data in JavaScript is an object. An object allows us to group related data and functions together. This is great, but once we have this object, how do we interact with the data? This is where built-in JavaScript methods like Object.keys() and Object.values() come into play.
+
+In the context of a real-world application, consider building a system for a bookstore. The system might need to handle a catalog of books, organized by categories. Each category could have a number of books associated with it. This might be represented as an object in JavaScript, like so:
+
+let bookCategories = {
+"Science Fiction": 120,
+"Mystery": 200,
+"Fantasy": 230,
+"Biography": 150,
+"History": 180,
+"Children's": 300
+};
+In this object, book categories are keys, and the number of books in each category are the corresponding values. But what if you want to perform operations on just the categories (keys) or just the quantities (values)? This is where Object.keys() and Object.values() can be particularly helpful.
+
+1. Object.keys(): This method is used when you want to retrieve all the keys from an object. For our bookstore, if we want a list of all book categories, we can use Object.keys():
+
+let categories = Object.keys(bookCategories);
+console.log(categories);
+// Output: ["Science Fiction", "Mystery", "Fantasy", "Biography", "History", "Children's"]
+Here, Object.keys(bookCategories) returns an array of the keys (the book categories) from the bookCategories object.
+
+2. Object.values(): This method is used when you want to retrieve all the values from an object. If you want a list of the counts of books in each category, you can use Object.values():
+
+let numberOfBooks = Object.values(bookCategories);
+console.log(numberOfBooks); // Output: [120, 200, 230, 150, 180, 300]
+Here, Object.values(bookCategories) returns an array of all the values (counts of books) from the bookCategories object.
+
+So, Object.keys() and Object.values() provide a direct way to access the keys and values of an object, respectively, allowing you to handle and manipulate the data according to your needs.
