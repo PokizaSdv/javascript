@@ -1,0 +1,111 @@
+Nested Loops For loops are crucial because they allow us to repeat a certain
+code block multiple times. Essentially, we can create a compact piece of loop
+code that performs extensive tasks over numerous iterations. The body of a loop
+is quite flexible, we can incorporate any valid JavaScript code into it: for
+(let counter = 0; counter < 3; counter++) { // This is the body of the loop. //
+Any code can be placed here! console.log("Counter value:", counter); } We can
+add variable declarations, conditionals, function calls, and even another loop
+inside the body of a loop. This introduces us to the concept of nested loops:
+for (let outerCounter = 2; outerCounter <= 4; outerCounter++) {
+console.log("Outer loop count:", outerCounter); for (let innerCounter = 2;
+innerCounter <= 6; innerCounter++) { console.log(" Inner loop count:",
+innerCounter); } } Although it might seem a bit complex at first, each for loop
+in the nested loops behaves exactly like any regular loop. Bearing this in mind,
+the nested loops above produce the following output: Outer loop count: 2 Inner
+loop count: 2 Inner loop count: 3 Inner loop count: 4 Inner loop count: 5 Inner
+loop count: 6 Outer loop count: 3 Inner loop count: 2 Inner loop count: 3 Inner
+loop count: 4 Inner loop count: 5 Inner loop count: 6 Outer loop count: 4 Inner
+loop count: 2 Inner loop count: 3 Inner loop count: 4 Inner loop count: 5 Inner
+loop count: 6 Understanding this output is straightforward. The outer loop runs
+three times (2 through 4). During every iteration, we execute all the code
+inside the loop's body. That's why we see the outer loop count printed three
+times in total. However, after printing the outer loop count, we also need to
+execute the entire inner loop (from 2 through 6). Notice that we execute the
+whole inner loop three separate times in total. Let's modify our console.log
+statements to better visualize how the counters change: for (let outerCounter =
+2; outerCounter <= 4; outerCounter++) { for (let innerCounter = 2; innerCounter
+<= 6; innerCounter++) { console.log(outerCounter + ', ' + innerCounter); } } The
+output produced by the code above is: 2, 2 2, 3 2, 4 2, 5 2, 6 3, 2 3, 3 3, 4 3,
+5 3, 6 4, 2 4, 3 4, 4 4, 5 4, 6 Notice how the first number (outerCounter) of
+each pair doesn't change in every iteration, but the second number
+(innerCounter) does. Generating All Possible Pairs Nested for loops prove
+particularly useful when we need to consider all possible pairs in an array.
+Let's demonstrate this by printing all possible combinations of elements within
+a single array. To do so, we'll use nested for loops that both iterate through
+the same array: let names = ['John', 'Alex', 'Chris']; for (let i = 0; i <
+names.length; i++) { let name1 = names[i]; for (let j = 0; j < names.length;
+j++) { let name2 = names[j]; console.log(name1, name2); } } Here, we use two
+different indices, i and j, because we're considering two elements in the array.
+This results in the following output: John John John Alex John Chris Alex John
+Alex Alex Alex Chris Chris John Chris Alex Chris Chris Generating Only Unique
+Pairs Great! We were able to generate all possible pairs, but it seems we have
+some redundant pairs. 'John John' is not a valid pair as both names refer to the
+same person. Also, 'John Alex' is one pair, but later on we have 'Alex John'.
+Each name combination appears twice, albeit in a different order. If we only
+want unique pairs, we should ensure that counter j always surpasses i. let names
+= ['John', 'Alex', 'Chris']; for (let i = 0; i < names.length; i++) { let name1
+= names[i]; // As we initialize j to be i + 1, j will always be greater than i
+for (let j = i + 1; j < names.length; j++) { let name2 = names[j];
+console.log(name1, name2); } } Implementing the counters in this manner results
+in only unique pairs: John Alex John Chris Alex Chris Here's a way to
+conceptualize why this alteration in counter leads to such different output:
+remember that both the outer loop i and inner loop j are iterating through the
+same array, 'names'. When we impose that j be strictly greater than i, we are
+ensuring that the index j is never the same as what the index i was in the
+previous iteration, as indices only increment (++) as we iterate. This can take
+a moment to fully grasp. A Practical Example: pairZero Now let's look at a
+typical problem involving nested loops where we need to avoid duplicate pairs.
+This problem will incorporate multi-dimensional arrays, so feel free to revisit
+those notes if necessary. We need to write a function pairZero(array) that takes
+in an array of numbers as an argument and returns all pairs of numbers that sum
+to 0. Assume that all the numbers in the given array are unique. The function
+should return an array that contains pairs, each pair being an array of length
+2. Here's a foundational partial solution to start with: // Preliminary solution
+that returns duplicate pairs function pairZero(array) { let pairs = []; for (let
+i = 0; i < array.length; i++) { for (let j = 0; j < array.length; j++) { let
+num1 = array[i]; let num2 = array[j]; if (num1 + num2 === 0) { pairs.push([num1,
+num2]); } } } return pairs; } // This results in duplicate pairs :( pairZero([5,
+2, 0]); // => [ [0, 0] ] pairZero([2, 3, -2]); // => [ [ 2, -2 ], [ -2, 2 ] ]
+pairZero([0, 3, 6, -3]); // => [ [ 0, 0 ], [ 3, -3 ], [ -3, 3 ] ] Now let's
+apply what we've learned to eliminate these duplicates: function pairZero(array)
+{ let pairs = []; for (let i = 0; i < array.length; i++) { for (let j = i + 1; j
+< array.length; j++) { let num1 = array[i]; let num2 = array[j]; if (num1 + num2
+=== 0) { pairs.push([num1, num2]); } } } return pairs; } // Now it works as
+expected! pairZero([5, 2, 0]); // => [] pairZero([2, 3, -2]); // => [ [ 2, -2 ]
+] pairZero([0, 3, 6, -3]); // => [ [ 3, -3 ] ] You can see that the results are
+quite different when we start j at i + 1. Now, we only find unique pairs whose
+sum equals 0, and we don't include the pair where both elements are 0, since
+those don't constitute a "pair" in the context of this problem. This shows the
+utility of nested loops and how we can tweak them to solve different problems.
+We have seen that it is quite important to understand how changing the start and
+end conditions of the inner loop relative to the outer loop changes the overall
+behavior of the nested loops. NestedArrays Nested arrays, as the name implies,
+are arrays that contain other arrays. They are particularly useful for
+organizing and storing related data together. Here is a simple example of a
+nested array: let nestedArray = [ ['apple', 'banana'], ['carrot', 'broccoli'] ];
+In this example, nestedArray contains two arrays, each of which contains two
+strings. Iterating Over Nested Arrays Iterating over a nested array typically
+requires nested loops, a loop within another loop. Consider the following
+example, where we want to print every item in our nested array: for (let i = 0;
+i < nestedArray.length; i++) { for (let j = 0; j < nestedArray[i].length; j++) {
+console.log(nestedArray[i][j]); } } Here's how this works: The Outer Loop: The
+outer loop iterates over each "inner" array within the nestedArray. For example,
+in the first iteration i = 0, it's pointing to the first inner array ['apple',
+'banana']. The Inner Loop: The inner loop runs within each iteration of the
+outer loop and it goes through each element within the current inner array. For
+instance, when the outer loop is at i = 0 (the first inner array), the inner
+loop iterates over 'apple' and 'banana'. This combination allows us to visit
+each element within all of the inner arrays, effectively letting us loop through
+all the elements of the nestedArray. Practical Applications: Storing Geographic
+Coordinates A great real-world use case for nested arrays is storing geographic
+coordinates, like those used by Google Maps. Each coordinate contains a pair of
+latitude and longitude values, which can be stored as an array. If you have
+multiple coordinates, you can store these pairs within another array, creating a
+nested array. Here's an example: let coordinates = [ [37.7749, -122.4194],
+[34.0522, -118.2437], [51.5074, -0.1278] ]; In this nested array, each inner
+array represents a pair of geographic coordinates (latitude, longitude). The
+outer array then contains all of these pairs. Nested loops could be used to
+iterate over this coordinates array, just like we did with the fruit and
+vegetable example. The outer loop would iterate over each pair of coordinates,
+and the inner loop would access the individual latitude and longitude within
+each pair
