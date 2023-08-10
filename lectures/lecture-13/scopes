@@ -1,0 +1,95 @@
+Scope Global Scope Scope in JavaScript is a big imaginary boundary or a box that
+determines the accessibility or visibility of variables, functions, and objects
+in some particular region of your code during runtime. In simpler terms, it's
+like a container where identifiers (variables, functions etc) live. If something
+is within the same container, it can see and use the other things in the same
+container. But if something is in a different container, it can't be seen or
+used. Think of it like rooms in a house: The whole house is the "global scope".
+If you leave a book in the living room, anyone in the house can see and read it
+because it's in the "global scope" of the house. Each room in the house is its
+own "local scope". If you leave a toy in your bedroom, only people who are also
+in your bedroom can see and play with the toy. People in other rooms can't
+because the toy is in the "local scope" of your bedroom. The JavaScript "house"
+has one global scope and any number of local scopes within it. Just like in a
+real house, every room has access to the living room (global scope), but the
+living room doesn't have access to the rooms (local scopes). When you declare a
+variable outside all functions or blocks, it is a global variable and can be
+accessed from any part of the code. var globalVar = "I am a global variable";
+function testFunc1() { console.log(globalVar); // Output: "I am a global
+variable" } testFunc1(); console.log(globalVar); // Output: "I am a global
+variable" Local/Function Scope When a variable is declared inside a function, it
+is local to that function and cannot be accessed outside that function. function
+testFunc2() { var localVar = "I am a local variable"; console.log(localVar); //
+Output: "I am a local variable" } testFunc2(); // console.log(localVar); //
+Uncommenting this line will throw an error because localVar is not accessible
+outside testFunc2. When you have a local variable and a global variable with the
+same name, the local scope takes precedence inside its function: var var1 = "I
+am global var1"; function testFunc3() { var var1 = "I am local var1";
+console.log(var1); // Output: "I am local var1" } testFunc3();
+console.log(var1); // Output: "I am global var1" Variables: let and const 1. The
+let keyword: The let keyword declares a block-scoped local variable, optionally
+initializing it to a value. What does block-scoped mean? Essentially, a variable
+declared with let in a block (denoted by {} braces) is only accessible within
+that block and any nested blocks. let x = 1; if (true) { let x = 2; // Different
+variable from the first 'x' console.log(x); // 2 } console.log(x); // 1 In this
+example, the first x is defined in the global scope, and the second x is defined
+within the scope of the if block. Even though they share the same name, they are
+distinct variables. Also, unlike var, let does not allow you to redeclare the
+same variable in the same scope, but you can reassign a new value to it. let y =
+10; let y = 20; // Uncaught SyntaxError: Identifier 'y' has already been
+declared y = 20; // No problem, y is now 20 2. The const keyword: const is also
+block-scoped like let, but it creates a constant reference to a value. This does
+not mean the value it holds is immutable, just that the variable identifier
+cannot be reassigned. For instance, in the case of an object or an array, the
+content of the object or array can be altered. const z = 30; z = 40; // Uncaught
+TypeError: Assignment to constant variable. With const, you cannot reassign the
+variable or redeclare it in the same scope. const a = [1, 2, 3]; a = [4, 5, 6];
+// Uncaught TypeError: Assignment to constant variable. a.push(4); // This is
+fine, you're changing the content of 'a', not the reference. console.log(a); //
+[1, 2, 3, 4] In this example, a is an array that we declare with const. We can't
+reassign a to a new array, but we can modify the contents of the array that a
+points to. Hoisting Hoisting is a JavaScript mechanism where variables and
+function declarations are moved to the top of their containing scope during the
+compile phase, before the code has been executed. This means that you can use
+variables and functions before they have been declared. This concept can be
+confusing because it seems like the variable or function is being used before
+it's declared, but in reality, JavaScript engines process the scripts in two
+phases: the compile phase and the execute phase. During the compile phase, the
+JavaScript engine looks through your code to find all variable and function
+declarations and moves them to the top of their containing scope. Then, during
+the execution phase, your code is run line by line 1. Hoisting with var: In
+JavaScript, var variables are hoisted to the top of their scope and initialized
+with a value of undefined. console.log(myVar); // undefined var myVar = 5;
+console.log(myVar); // 5 Even though the myVar variable is declared after the
+first console.log, JavaScript 'hoists' the variable declaration to the top of
+the scope, which is why the first console.log outputs undefined instead of
+throwing an error. 2. Hoisting with let and const: The let and const keywords
+also hoist their variables to the top of the block, but unlike var, they are not
+initialized. They are in a "temporal dead zone" from the start of the block
+until the declaration is processed. console.log(myLetVar); // Uncaught
+ReferenceError: Cannot access 'myLetVar' before initialization let myLetVar =
+10; In this example, JavaScript throws a ReferenceError when trying to log
+myLetVar to the console because let variables are not initialized during
+hoisting. 3. Hoisting with function declarations: Function declarations are
+hoisted completely to the top of their scope. console.log(myFunction()); //
+"Hello" function myFunction() { return "Hello"; } In this example, calling
+myFunction before its declaration in the code does not throw an error because
+the function declaration was hoisted to the top of the scope. 4. Hoisting with
+function expressions: Function expressions, on the other hand, are not hoisted.
+console.log(myFunctionExpression()); // Uncaught TypeError: myFunctionExpression
+is not a function var myFunctionExpression = function() { return "Hello"; } In
+this example, calling myFunctionExpression before it's assigned a function
+results in a TypeError, because only the variable declaration (var
+myFunctionExpression) is hoisted, not the assignment of the function. 5.
+Hoisting in different scopes: Hoisting works the same way in global and function
+scopes: var variables and function declarations are hoisted to the top of their
+containing scope, while let and const variables are hoisted to the top of their
+block. myVar = 5; // Assign 5 to global myVar var myVar; // Declare global
+variable 'myVar' after assignment function someFunction() { console.log(myVar);
+// undefined, because function scope has its own 'myVar' var myVar = 10; //
+Declare and assign local 'myVar' inside function console.log(myVar); // 10 }
+someFunction(); console.log(myVar); // 5, because global 'myVar' is still 5 In
+this example, the function someFunction has its own myVar variable that is
+hoisted to the top of its scope. It does not affect the global myVar. Remember,
+it's usually best practice to declare and initialize variables at the beginning
+of their scope to avoid confusion related to hoisting.
