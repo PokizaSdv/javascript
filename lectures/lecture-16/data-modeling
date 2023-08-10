@@ -1,0 +1,214 @@
+Data Modeling
+Data modeling is essential because it helps to organize, manage and understand data in a structured and predictable way. It's a way of conceptualizing the data you have to work with and deciding how to structure it so that it is easy to use, understand, and maintain.
+
+Data modeling also helps with data consistency, which is crucial in programming. It ensures that the data follows a particular standard, thus making it predictable and easier to handle, especially when working with complex systems or sharing data across different systems.
+
+Let's illustrate with some examples.
+
+Event Planning
+Level 1
+Consider an application that organizes events. A simple way to model an event might be:
+
+let event = {
+title: "Code Conference 2023",
+date: "2023-10-01",
+location: "San Francisco",
+attendees: 500
+};
+The above data structure represents an event with some basic information.
+
+Level 2
+But what if we want to track specific attendees, not just the count? We'd need a more complex structure. Here, we add an attendees array, allowing us to store objects representing each attendee.
+
+let event = {
+title: "Code Conference 2023",
+date: "2023-10-01",
+location: "San Francisco",
+attendees: [
+{
+name: "Alice",
+email: "alice@example.com"
+},
+{
+name: "Bob",
+email: "bob@example.com"
+}
+]
+};
+This approach lets us model each attendee as an individual object with name and email properties.
+
+Level 3
+Let's take it a step further. Suppose we want to handle different types of tickets. We can modify our attendees objects to include this information.
+
+let event = {
+title: "Code Conference 2023",
+date: "2023-10-01",
+location: "San Francisco",
+attendees: [
+{
+name: "Alice",
+email: "alice@example.com",
+ticketType: "VIP"
+},
+{
+name: "Bob",
+email: "bob@example.com",
+ticketType: "Regular"
+}
+]
+};
+This gives us much more flexibility and complexity in our data model, allowing us to store more detailed information about each attendee.
+
+Level 4
+But we can go even further. What if each attendee can attend multiple events, and each event can have multiple attendees? Here we have a many-to-many relationship which is common in data modeling.
+
+let events = [
+{
+title: "Code Conference 2023",
+date: "2023-10-01",
+location: "San Francisco",
+attendees: [
+{
+name: "Alice",
+email: "alice@example.com",
+ticketType: "VIP"
+},
+{
+name: "Bob",
+email: "bob@example.com",
+ticketType: "Regular"
+}
+]
+},
+{
+title: "AI Expo 2023",
+date: "2023-11-10",
+location: "New York",
+attendees: [
+{
+name: "Alice",
+email: "alice@example.com",
+ticketType: "Regular"
+},
+{
+name: "Charlie",
+email: "charlie@example.com",
+ticketType: "VIP"
+}
+]
+}
+];
+Level 5
+This structure allows us to model multiple events, each with multiple attendees. However, you'll notice that we're repeating attendee information across multiple events. Depending on the system's needs, it might be more efficient to maintain a separate list of attendees and refer to them by ID in each event. This is a basic form of data normalization, a key concept in data modeling.
+
+let attendees = [
+{ id: 1, name: "Alice", email: "alice@example.com" },
+{ id: 2, name: "Bob", email: "bob@example.com" },
+{ id: 3, name: "Charlie", email: "charlie@example.com" },
+];
+
+let events = [
+{
+title: "Code Conference 2023",
+date: "2023-10-01",
+location: "San Francisco",
+attendees: [
+{ attendeeId: 1, ticketType: "VIP" },
+{ attendeeId: 2, ticketType: "Regular" },
+]
+},
+{
+title: "AI Expo 2023",
+date: "2023-11-10",
+location: "New York",
+attendees: [
+{ attendeeId: 1, ticketType: "Regular" },
+{ attendeeId: 3, ticketType: "VIP" },
+]
+}
+];
+In this example, each attendee is an object with a unique id. Instead of embedding the entire attendee object in each event, we only include the id of each attendee, reducing redundancy and making the data easier to manage.
+
+These examples illustrate how you might structure your data in increasingly complex scenarios. The specific structure you choose will depend on your application's requirements and the specific problems you're trying to solve.
+
+School
+A school has multiple classes, and each class has multiple students. Each student can have multiple grades for different subjects. Let's see how we can model this data.
+
+Level 1
+Let's start with a simple data model that includes a single class and some students:
+
+let class1 = {
+name: "Science",
+students: ["Alice", "Bob", "Charlie"]
+};
+In this example, we're only storing the names of the students. But what if we want to store more information about each student, like their grades?
+
+Level 2
+let class1 = {
+name: "Science",
+students: [
+{
+name: "Alice",
+grades: [90, 95, 92]
+},
+{
+name: "Bob",
+grades: [85, 87, 89]
+},
+{
+name: "Charlie",
+grades: [88, 92, 94]
+}
+]
+};
+Now we're storing each student as an object, which lets us associate each student with a set of grades.
+
+Level 3
+But what if students can belong to multiple classes? We'd need to restructure our data model:
+
+let school = [
+{
+className: "Science",
+students: [
+{ name: "Alice", grades: [90, 95, 92] },
+{ name: "Bob", grades: [85, 87, 89] }
+]
+},
+{
+className: "Math",
+students: [
+{ name: "Alice", grades: [85, 88, 91] },
+{ name: "Charlie", grades: [88, 92, 94] }
+]
+}
+];
+In this structure, we have an array of classes, and each class has an array of students.
+
+Level 4 | Normalization
+However, similar to the event example, we are duplicating the student information in multiple classes. If we want to keep the student information in one place, we can normalize the data like so:
+
+let students = [
+{ id: 1, name: "Alice" },
+{ id: 2, name: "Bob" },
+{ id: 3, name: "Charlie" },
+];
+
+let classes = [
+{
+className: "Science",
+students: [
+{ studentId: 1, grades: [90, 95, 92] },
+{ studentId: 2, grades: [85, 87, 89] },
+]
+},
+{
+className: "Math",
+students: [
+{ studentId: 1, grades: [85, 88, 91] },
+{ studentId: 3, grades: [88, 92, 94] },
+]
+}
+];
+Here, we maintain a separate list of students and refer to them by ID in each class. This way, we avoid duplication of student data and keep it consistent across the system.
+
+It's important to note that the specific structure of the data model will depend on your application's needs. For example, this model doesn't account for multiple schools, subjects for each grade, or different school years. Depending on the requirements of your application, you might need to modify the model to handle these complexities.
